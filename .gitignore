@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.env.*
+!.env.example
+*.local
+
+# 로컬 참고용 문서 (저장소에 올리지 않음)
+samboart-spec.md
+supabase-schema.sql

@@ -1,0 +1,198 @@
+/* ===== 공통: 자리표시자 / 이미지 크롭 ===== */
+.ph {
+  width: 100%;
+  min-height: 80px;
+  background: #EEEEEE;
+  color: #8A8A8A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 10px;
+}
+.ph strong { font-weight: 600; }
+.ph span { font-size: 14px; }
+.crop { width: 100%; overflow: hidden; }
+.crop img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+/* ===== 탑배너 ===== */
+.topbanner {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--topbanner-h);
+  background: #1A1A1A;
+  z-index: 99;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.topbanner.hide { opacity: 0; visibility: hidden; }
+.topbanner .container {
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ===== 헤더 ===== */
+.header {
+  position: fixed; left: 0; right: 0;
+  top: var(--topbanner-h);
+  height: var(--header-h);
+  background: #FFFFFF;
+  z-index: 100;
+  transition: top 0.3s, box-shadow 0.2s;
+}
+.header.top0 { top: 0; }
+.header.shadow { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); }
+.header-spacer { height: calc(var(--topbanner-h) + var(--header-h)); }
+.header-inner {
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { display: block; }
+.logo-ph {
+  display: flex; align-items: center; justify-content: center;
+  width: 125px; height: 40px;
+  background: #EEEEEE; color: #8A8A8A; font-size: 13px;
+}
+
+.nav-desktop > ul { display: flex; margin-right: -24px; }
+.nav-item { position: relative; height: var(--header-h); display: flex; align-items: center; }
+.nav-item > a { display: flex; align-items: center; height: 100%; padding: 0 24px; }
+.nav-item > a span { position: relative; display: inline-block; padding-bottom: 4px; }
+.nav-item > a span::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: #1A1A1A;
+  transform: scaleX(0); transition: transform 0.2s;
+}
+.nav-item:hover > a span::after,
+.nav-item > a.active span::after { transform: scaleX(1); }
+
+/* ===== 하위 메뉴 창 (헤더·사이드바 공통) ===== */
+.dd {
+  position: absolute;
+  width: 180px;
+  white-space: nowrap;
+  background: #FFFFFF;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  z-index: 110;
+  animation: ddFade 0.1s linear; /* 창 전체가 한 번에 나타남 */
+}
+.dd li { position: relative; display: block; }
+.dd a, .dd .no-link {
+  display: flex; align-items: center;
+  height: 44px; padding: 0 20px;
+  transition: background 0.2s;
+}
+.dd li:hover > a { background: var(--color-light-green); }
+
+/* 1단 창: 헤더 바로 아래 (빈 공간 없음) */
+.nav-item > .dd { top: 100%; left: 50%; margin-left: -90px; }
+/* 2단 창: 항목 오른쪽 (테두리 겹쳐 빈 공간 없음) */
+.dd .dd-sub { top: -1px; left: 100%; margin-left: -1px; }
+.dd li[data-flip="1"] > .dd-sub { left: auto; right: 100%; margin-left: 0; margin-right: -1px; }
+@keyframes ddFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ===== 모바일 메뉴 ===== */
+.hamburger { display: none; }
+.m-nav {
+  position: absolute; top: 100%; left: 0; right: 0;
+  max-height: calc(100vh - 56px - 56px);
+  overflow-y: auto;
+  background: #FFFFFF;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.m-row {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 48px; padding-right: 8px;
+  border-bottom: 1px solid var(--color-line);
+}
+.m-row > a { flex: 1; display: flex; align-items: center; min-height: 48px; }
+.m-toggle { width: 48px; height: 48px; font-size: 22px; color: var(--color-text); }
+
+/* ===== 본문 / 사이드바 ===== */
+.page-wrap { display: flex; align-items: flex-start; gap: 40px; }
+.page-main { flex: 1; min-width: 0; min-height: 60vh; }
+
+.sidebar {
+  position: sticky; top: 84px;
+  align-self: flex-start;
+  flex: 0 0 180px; width: 180px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-line);
+  z-index: 20;
+}
+.sidebar.static { position: static; }
+.sidebar-title {
+  font-size: 16px;
+  height: 52px; display: flex; align-items: center; padding: 0 20px;
+  border-bottom: 1px solid var(--color-line);
+}
+.sidebar-list > li { position: relative; }
+.sidebar-item {
+  display: flex; align-items: center;
+  height: 44px; padding: 0 20px;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+.sidebar-item:hover { background: var(--color-light-green); }
+.sidebar-item.active,
+.sidebar-item.active:hover { background: var(--color-main); color: #FFFFFF; }
+.sidebar-list > li > .dd { top: -1px; left: 100%; margin-left: 1px; box-shadow: none; }
+.sidebar-list > li[data-flip="1"] > .dd { left: auto; right: 100%; margin-left: 0; margin-right: 1px; }
+.sidebar .dd a { font-size: 15px; }
+
+/* ===== 푸터 ===== */
+.footer { background: #1A1A1A; padding: 36px 0; }
+.footer .container { white-space: pre-wrap; line-height: 1.8; }
+.footer-mo { display: none; }
+
+/* ===== 탑버튼 / 모바일 전화 버튼 ===== */
+.topbtn {
+  position: fixed; right: 30px; bottom: 30px;
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 90;
+  transition: border-color 0.2s;
+  animation: fadeIn 0.3s;
+}
+.topbtn:hover { border-color: #1A1A1A; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.callbar { display: none; }
+
+/* ===== 모바일 (768px) ===== */
+@media (max-width: 768px) {
+  :root { --header-h: 56px; }
+  .topbanner, .sidebar, .topbtn, .nav-desktop { display: none; }
+  .header, .header.top0 { top: 0; }
+  .header-spacer { height: var(--header-h); }
+  .logo-ph { width: 110px; height: 36px; }
+  .hamburger { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; }
+  .page-wrap { display: block; }
+  .footer { padding: 28px 0; }
+  .footer-pc { display: none; }
+  .footer-mo { display: block; }
+  .callbar {
+    display: flex; align-items: center; justify-content: center;
+    position: fixed; left: 0; right: 0; bottom: 0;
+    height: 56px; background: var(--color-main); color: #FFFFFF;
+    z-index: 90;
+  }
+}
+
+/* 하위 메뉴 항목 hover (링크 없는 항목 포함) */
+.dd a:hover,
+.dd li:hover > a,
+.dd li:hover > .no-link { background: var(--color-light-green); }
+.dd .no-link { cursor: pointer; }
+
+/* 중분류 창에 마우스가 있는 동안에도 해당 대분류 항목 hover 배경 유지 */
+.sidebar-list > li:hover > .sidebar-item:not(.active) { background: var(--color-light-green); }

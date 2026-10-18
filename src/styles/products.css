@@ -1,0 +1,33 @@
+/* ===== 제품소개 (대분류·중분류) ===== */
+.product-page { padding-bottom: 100px; }
+.page-title { text-align: left; }
+.page-title-cat { margin-bottom: 40px; }
+.page-title-sub { margin-bottom: 20px; }
+.parent-name { color: #8A8A8A; margin-bottom: 8px; }
+.sub-desc { margin-bottom: 40px; white-space: pre-wrap; }
+.notfound { padding: 40px 0; }
+
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.product-page .card-grid, .product-page .photo-grid { grid-template-columns: repeat(3, minmax(0, 240px)); }
+.photo-btn { display: block; width: 100%; cursor: pointer; }
+
+
+/* ===== 사진 팝업 ===== */
+.lightbox {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex; align-items: center; justify-content: center;
+}
+.lightbox-img { display: block; max-width: 80vw; max-height: 80vh; width: auto; height: auto; object-fit: contain; }
+.lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
+.lightbox-nav.prev { left: 20px; }
+.lightbox-nav.next { right: 20px; }
+
+@media (max-width: 768px) {
+  .product-page { padding-bottom: 60px; }
+  .photo-grid, .product-page .card-grid, .product-page .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .lightbox-img { max-width: 90vw; }
+  .lightbox-nav { width: 44px; height: 44px; }
+  .lightbox-nav.prev { left: 4px; }
+  .lightbox-nav.next { right: 4px; }
+}

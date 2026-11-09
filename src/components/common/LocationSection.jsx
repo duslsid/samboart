@@ -32,7 +32,7 @@ export default function LocationSection({ id, title }) {
           {!active && <div className="map-guard" onClick={() => setActive(true)} />}
         </div>
         <div className="location-info">
-          <p className="font-body address">인천시 남동구 인주대로 725, 1층 삼보인테리어</p>
+          <p className="font-body address">인천시 남동구 인주대로 725, 1층 삼보아트</p>
           <div className="route-btns">
             <a href="https://naver.me/x3j2ebWb" target="_blank" rel="noopener noreferrer"
               className="btn-route font-body">네이버지도</a>

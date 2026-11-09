@@ -32,7 +32,7 @@ body {
   color: var(--color-body);
   background: #FFFFFF;
 }
-.font-menu    { font-family: 'Pretendard', sans-serif; font-size: 18px; font-weight: 500; color: var(--color-text); }
+.font-menu    { font-family: 'Pretendard', sans-serif; font-size: 18px; font-weight: 700; color: var(--color-text); }
 .font-submenu { font-family: 'Pretendard', sans-serif; font-size: 16px; font-weight: 500; color: #1A1A1A; }
 .font-title   { font-family: 'Pretendard', sans-serif; font-size: 36px; font-weight: 700; color: var(--color-text); }
 .font-sub     { font-family: 'Pretendard', sans-serif; font-size: 22px; font-weight: 600; color: var(--color-text); }
@@ -52,7 +52,7 @@ body {
 /* ===== 모바일 (기준점 768px 하나) ===== */
 @media (max-width: 768px) {
   body { font-size: 15px; padding-bottom: 56px; } /* 하단 고정 전화 버튼 여백 */
-  .font-menu   { font-size: 18px; font-weight: 500; }
+  .font-menu   { font-size: 18px; font-weight: 700; }
   .font-submenu { font-size: 16px; font-weight: 500; }
   .font-title  { font-size: 26px; font-weight: 600; }
   .font-sub    { font-size: 18px; font-weight: 600; }

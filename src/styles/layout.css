@@ -123,7 +123,7 @@
 }
 .sidebar.static { position: static; }
 .sidebar-title {
-  font-size: 16px;
+  font-size: 16px; font-weight: 500;
   height: 52px; display: flex; align-items: center; padding: 0 20px;
   border-bottom: 1px solid var(--color-line);
 }
@@ -131,7 +131,7 @@
 .sidebar-item {
   display: flex; align-items: center;
   height: 44px; padding: 0 20px;
-  font-size: 15px;
+  font-size: 15px; font-weight: 500;
   transition: background 0.2s;
 }
 .sidebar-item:hover { background: var(--color-light-green); }

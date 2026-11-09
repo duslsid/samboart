@@ -25,6 +25,7 @@
 
 @media (max-width: 768px) {
   .product-page { padding-bottom: 60px; }
+  .page-title-cat { margin-bottom: 20px; }
   .photo-grid, .product-page .card-grid, .product-page .photo-grid { grid-template-columns: repeat(2, 1fr); }
   .lightbox-img { max-width: 90vw; }
   .lightbox-nav { width: 44px; height: 44px; }

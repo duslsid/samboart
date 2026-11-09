@@ -173,6 +173,7 @@
   .logo-img { height: 40px; }
   .hamburger { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; }
   .page-wrap { display: block; }
+  .page-wrap:not(.after-hero) .page-main { padding-top: 24px; } /* 메인을 뺀 페이지는 제목이 헤더에 붙지 않게 */
   .footer { padding: 28px 0; }
   .footer-pc { display: none; }
   .footer-mo { display: block; }

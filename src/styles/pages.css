@@ -70,3 +70,10 @@
 .contact-success .success-sub { margin-top: 16px; }
 .contact-success .btn-home { margin: 32px auto 0; }
 .form-result.fail { color: var(--color-error); font-weight: 600; }
+
+/* ===== 모바일 제목·여백 (적용 순서 때문에 파일 맨 끝에 둔다) ===== */
+@media (max-width: 768px) {
+  .about-page .page-title, .gallery-page .page-title, .location-page .page-title { margin-bottom: 20px; }
+  .location-page { padding-bottom: 60px; }
+  .contact-success { padding-top: 36px; }
+}

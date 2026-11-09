@@ -1,7 +1,8 @@
 /* ===== 회사소개 ===== */
 .about-page { padding-bottom: 100px; }
 .about-page .page-title { margin-bottom: 40px; }
-.about-intro { white-space: pre-line; line-height: 1.8; }
+.about-intro p { line-height: 1.6; margin-bottom: 16px; }
+.about-intro p:last-child { margin-bottom: 0; }
 
 /* ===== 시공사례 ===== */
 .gallery-page { padding-bottom: 100px; }
@@ -46,6 +47,8 @@
 
 @media (max-width: 768px) {
   .about-page, .gallery-page, .contact-page { padding-bottom: 60px; }
+  .about-intro p { margin-bottom: 14px; }
+  .about-intro p:last-child { margin-bottom: 0; }
   .contact-form { width: 100%; }
   .product-options { grid-template-columns: repeat(2, 1fr); gap: 12px 8px; }
   .btn-submit { width: 100%; }

@@ -7,13 +7,17 @@ const INTRO = [
   '앞으로도 고객의 마음을 세심하게 헤아려 더 좋은 제품으로 보답하겠습니다.',
   '변함없는 관심과 사랑 부탁드립니다.',
   '감사합니다.',
-].join('\n')
+]
 
 export default function About() {
   return (
     <div className="about-page">
       <h1 className="font-title page-title">회사소개</h1>
-      <p className="font-body about-intro">{INTRO}</p>
+      <div className="font-body about-intro">
+        {INTRO.map((line) => (
+          <p key={line}>{line}</p>
+        ))}
+      </div>
     </div>
   )
 }

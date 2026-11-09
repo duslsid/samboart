@@ -23,6 +23,9 @@ function isValidPhone(value) {
   return digits >= 9 && digits <= 11
 }
 
+// 이메일은 선택 항목이라 형식이 맞을 때만 답장 주소(_replyto)로 보낸다. (형식이 틀린 값을 보내 전송이 거부되는 것을 막기 위해)
+const isReplyableEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+
 function validate(v) {
   const e = {}
   if (!v.name.trim()) e.name = MESSAGES.name
@@ -74,6 +77,7 @@ export default function Contact() {
           이름: values.name,
           전화번호: values.phone,
           이메일: values.email,
+          ...(isReplyableEmail(values.email) ? { _replyto: values.email.trim() } : {}), // 메일에서 "답장"을 누르면 손님 이메일이 들어가도록
           제품선택: values.products.join(', '),
           문의내용: values.message,
           개인정보동의: '동의',

@@ -3,7 +3,7 @@
 .about-page .page-title { margin-bottom: 40px; }
 .about-section { margin-bottom: 100px; }
 .about-text-ph { min-height: 160px; }
-.about-store { width: 100%; height: auto; display: block; }
+.about-section:last-child { margin-bottom: 0 }
 
 /* ===== 시공사례 ===== */
 .gallery-page { padding-bottom: 100px; }

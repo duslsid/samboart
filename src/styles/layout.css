@@ -48,11 +48,7 @@
   display: flex; align-items: center; justify-content: space-between;
 }
 .logo { display: block; }
-.logo-ph {
-  display: flex; align-items: center; justify-content: center;
-  width: 125px; height: 40px;
-  background: #EEEEEE; color: #8A8A8A; font-size: 13px;
-}
+.logo-img { display: block; height: 48px; width: auto; }
 
 .nav-desktop > ul { display: flex; margin-right: -24px; }
 .nav-item { position: relative; height: var(--header-h); display: flex; align-items: center; }
@@ -174,7 +170,7 @@
   .topbanner, .sidebar, .topbtn, .nav-desktop { display: none; }
   .header, .header.top0 { top: 0; }
   .header-spacer { height: var(--header-h); }
-  .logo-ph { width: 110px; height: 36px; }
+  .logo-img { height: 40px; }
   .hamburger { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-right: -10px; }
   .page-wrap { display: block; }
   .footer { padding: 28px 0; }

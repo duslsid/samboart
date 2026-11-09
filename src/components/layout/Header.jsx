@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { CATEGORIES, categoryPath, subPath } from '../../data/categories.js'
 import { ONLINE_STORES } from '../../data/site.js'
+import { localImage } from '../../lib/images.js'
 import { flipOnEnter, useHoverOpen } from './menuUtils.js'
 
 const MENUS = [
@@ -85,8 +86,7 @@ export default function Header({ scrolled, bannerHidden }) {
     <header className={`header${bannerHidden ? ' top0' : ''}${scrolled ? ' shadow' : ''}`}>
       <div className="container header-inner">
         <Link to="/" className="logo" aria-label="삼보아트 메인으로">
-          {/* 로고 이미지가 준비되면 public/image/logo 의 파일로 교체 */}
-          <span className="logo-ph">로고 이미지 준비 중</span>
+          <img src={localImage('logo/samboart_logo_green_wide.svg')} alt="삼보아트" className="logo-img" />
         </Link>
 
         <nav className="nav-desktop" aria-label="주 메뉴">

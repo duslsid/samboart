@@ -31,6 +31,9 @@ body {
   font-weight: 400;
   color: var(--color-body);
   background: #FFFFFF;
+  /* 한글은 띄어쓰기 단위로만 줄바꿈, 띄어쓰기 없는 긴 글자(주소·URL·메일)는 영역을 넘칠 때만 강제로 끊는다 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 .font-menu    { font-family: 'Pretendard', sans-serif; font-size: 18px; font-weight: 700; color: var(--color-text); }
 .font-submenu { font-family: 'Pretendard', sans-serif; font-size: 16px; font-weight: 500; color: #1A1A1A; }

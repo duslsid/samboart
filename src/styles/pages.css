@@ -72,7 +72,7 @@
 .form-result.fail { color: var(--color-error); font-weight: 600; }
 
 /* ===== 개인정보처리방침 ===== */
-.privacy-page { max-width: 900px; padding-bottom: 100px; }
+.privacy-page { padding-bottom: 100px; }
 .privacy-page .page-title { margin-bottom: 40px; }
 .privacy-body section { margin-top: 40px; }
 .privacy-body h2 { margin-bottom: 12px; }

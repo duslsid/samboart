@@ -16,11 +16,30 @@ const MESSAGES = {
 
 const EMPTY = { name: '', phone: '', email: '', products: [], message: '', agree: false, _gotcha: '' }
 
-// 숫자·하이픈·공백만 허용, 하이픈/공백을 뺀 숫자가 9~11자리
+// 입력값에서 숫자만 남기고 번호 종류에 맞게 하이픈을 붙인다. (하이픈을 직접 쳐도 같은 결과)
+// 010·011 등 휴대폰: 3-4-4 / 02: 2-3(또는 4)-4 / 031·032 등 지역번호: 3-3(또는 4)-4 / 1588 같은 대표번호: 4-4
+function formatPhone(value) {
+  const raw = value.trim()
+  let digits = raw.replace(/\D/g, '')
+  if (raw.startsWith('+82')) digits = '0' + digits.slice(2) // 자동완성으로 +82 형태가 들어온 경우
+
+  if (digits.startsWith('1')) {
+    const d = digits.slice(0, 8)
+    return d.length > 4 ? `${d.slice(0, 4)}-${d.slice(4)}` : d
+  }
+  if (!digits.startsWith('0')) return digits.slice(0, 11)
+
+  const area = digits.startsWith('02') ? 2 : 3
+  const d = digits.slice(0, area === 2 ? 10 : 11)
+  const middle = digits.startsWith('010') || d.length >= area + 8 ? 4 : 3
+  return [d.slice(0, area), d.slice(area, area + middle), d.slice(area + middle)].filter(Boolean).join('-')
+}
+
+// 하이픈을 뺀 숫자가 9~11자리, 또는 1588처럼 1로 시작하는 8자리 대표번호
 function isValidPhone(value) {
-  if (!/^[0-9- ]+$/.test(value)) return false
-  const digits = value.replace(/[- ]/g, '').length
-  return digits >= 9 && digits <= 11
+  const digits = value.replace(/\D/g, '')
+  if (digits.startsWith('1')) return digits.length === 8
+  return digits.length >= 9 && digits.length <= 11
 }
 
 // 이메일은 선택 항목이라 형식이 맞을 때만 답장 주소(_replyto)로 보낸다. (형식이 틀린 값을 보내 전송이 거부되는 것을 막기 위해)
@@ -122,8 +141,8 @@ export default function Contact() {
 
         <div className="field">
           <label htmlFor="c-phone" className="font-body field-label">전화번호 *</label>
-          <input id="c-phone" type="tel" className={cls('phone')} value={values.phone}
-            onChange={(e) => set('phone', e.target.value)} autoComplete="tel"
+          <input id="c-phone" type="tel" inputMode="numeric" className={cls('phone')} value={values.phone}
+            onChange={(e) => set('phone', formatPhone(e.target.value))} autoComplete="tel"
             placeholder="010-1234-5678" />
           <FieldError text={errors.phone} />
         </div>

@@ -48,7 +48,7 @@
   display: flex; align-items: center; justify-content: space-between;
 }
 .logo { display: block; }
-.logo-img { display: block; height: 48px; width: auto; }
+.logo-img { display: block; height: 56px; width: auto; } /* 헤더 64px 안에서 위아래 가운데 */
 
 .nav-desktop > ul { display: flex; margin-right: -24px; }
 .nav-item { position: relative; height: var(--header-h); display: flex; align-items: center; }

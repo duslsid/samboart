@@ -35,7 +35,7 @@ body {
   word-break: keep-all;
   overflow-wrap: break-word;
 }
-.font-menu    { font-family: 'Pretendard', sans-serif; font-size: 18px; font-weight: 700; color: var(--color-text); }
+.font-menu    { font-family: 'Pretendard', sans-serif; font-size: 20px; font-weight: 700; color: var(--color-text); } /* 모바일은 아래 768px 규칙에서 18px */
 .font-submenu { font-family: 'Pretendard', sans-serif; font-size: 16px; font-weight: 500; color: #1A1A1A; }
 .font-title   { font-family: 'Pretendard', sans-serif; font-size: 36px; font-weight: 700; color: var(--color-text); }
 .font-sub     { font-family: 'Pretendard', sans-serif; font-size: 22px; font-weight: 600; color: var(--color-text); }

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const PC_TEXT = `상호  삼보아트  ㅣ  대표자  김용관  ㅣ  사업자등록번호  139-06-02967
 주소  인천시 남동구 인주대로 725, 1층 삼보아트
 HP  010-4439-4306  ㅣ  전화  032-465-1933  ㅣ  팩스  032-465-1934
@@ -18,6 +20,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-pc">{PC_TEXT}</div>
         <div className="footer-mo">{MO_TEXT}</div>
+        <Link to="/privacy" className="footer-privacy">개인정보처리방침</Link>
       </div>
     </footer>
   )

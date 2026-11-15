@@ -145,6 +145,7 @@
 .footer { background: #1A1A1A; padding: 36px 0; }
 .footer .container { white-space: pre-wrap; line-height: 1.8; }
 .footer-mo { display: none; }
+.footer-privacy { display: inline-block; margin-top: 12px; font-weight: 700; color: #FFFFFF; }
 
 /* ===== 탑버튼 / 모바일 전화 버튼 ===== */
 .topbtn {

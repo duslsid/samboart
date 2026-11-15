@@ -12,6 +12,7 @@ export default function Layout() {
   const { pathname, hash } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const isHome = pathname === '/'
+  const noSidebar = pathname === '/privacy' // 개인정보처리방침은 사이드바 없이 본문만
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0)
@@ -32,7 +33,7 @@ export default function Layout() {
       <div className="header-spacer" />
       {isHome && <MainSlider />}
       <div className={`container page-wrap${isHome ? ' after-hero' : ''}`}>
-        <Sidebar />
+        {!noSidebar && <Sidebar />}
         <main className="page-main">
           <Outlet />
         </main>

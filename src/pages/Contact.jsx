@@ -157,12 +157,16 @@ export default function Contact() {
         </div>
 
         <div className="field">
-          <label className="check font-body">
-            <input type="checkbox" checked={values.agree} onChange={(e) => set('agree', e.target.checked)} />
-            <span>[필수] 개인정보 수집·이용에 동의합니다.</span>
-          </label>
+          <div className="agree-row">
+            <label className="check font-body">
+              <input type="checkbox" checked={values.agree} onChange={(e) => set('agree', e.target.checked)} />
+              <span>[필수] 개인정보 수집·이용에 동의합니다.</span>
+            </label>
+            {/* 새 탭으로 열어 입력하던 내용이 사라지지 않게 한다 */}
+            <Link to="/privacy" target="_blank" rel="noopener noreferrer" className="privacy-link font-body">전문 보기</Link>
+          </div>
           <p className="privacy-note">
-{`· 수집 항목 : 이름, 전화번호, 이메일(선택)
+{`· 수집 항목 : 이름, 전화번호, 제품 선택, 문의 내용, 이메일(선택)
 · 수집 목적 : 견적 문의 답변
 · 보유 기간 : 문의 처리 완료 후 6개월`}
           </p>

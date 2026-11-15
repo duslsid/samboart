@@ -8,6 +8,7 @@ import ProductCategory from './pages/ProductCategory.jsx'
 import ProductSub from './pages/ProductSub.jsx'
 import Gallery from './pages/Gallery.jsx'
 import Contact from './pages/Contact.jsx'
+import Privacy from './pages/Privacy.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 // 관리자 화면은 손님 사이트와 분리해 필요할 때만 불러온다
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/products/:cat/:sub" element={<ProductSub />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/admin" element={<Suspense fallback={null}><AdminApp /></Suspense>} />

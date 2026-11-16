@@ -21,7 +21,8 @@
 ## 코드 작성 주의
 - 정규식·역슬래시(`\`)가 들어간 코드는 셸(heredoc, `node -e` 등)로 쓰지 말고 Edit/Write 도구로 쓴다. 셸을 거치면 역슬래시가 사라져 정규식이 깨진 적이 있다.
 - CSS는 `src/main.jsx`의 순서(global → layout → home → products → pages)로 불러온다. 우선순위가 같으면 나중 파일·나중 줄이 이긴다. 모바일(768px 하나) 규칙은 같은 선택자의 기본 규칙보다 뒤에 둔다.
-- 배포는 GitHub Pages(GitHub Actions)이고 접속 주소는 https://samboart.com 이다. 도메인이 사이트 루트라서 Vite base는 `/`이고, 주소에 `#` 없이 BrowserRouter를 쓴다. 새로고침·직접 접속은 `public/404.html` 우회(`pathSegmentsToKeep = 0`)가 처리하므로 라우터를 바꾸지 않는다. DNS는 Cloudflare가 관리하고 모든 레코드를 DNS only(프록시 꺼짐)로 유지한다. 저장소에 CNAME 파일은 두지 않는다(Actions 배포는 저장소 Pages 설정의 Custom domain을 쓴다).
+- 배포는 GitHub Pages(GitHub Actions)이고 접속 주소는 https://samboart.com 이다. 도메인이 사이트 루트라서 Vite base는 `/`이고, 주소에 `#` 없이 BrowserRouter를 쓴다. 라우터를 바꾸지 않는다. 공개 페이지는 배포 빌드(`npm run build`) 뒤에 `scripts/generate-pages.mjs`가 페이지마다 `dist/<주소>/index.html` 사본을 만들어 200으로 응답하게 하고(제목·설명·og·canonical·noscript 포함), `scripts/generate-sitemap.mjs`가 `sitemap.xml`을 만든다. 사본 주소는 끝 슬래시(`/privacy/`)가 대표 주소이므로 코드에서 `pathname`을 비교할 때는 끝 슬래시를 뗀 값으로 비교한다. `public/404.html` 우회(`pathSegmentsToKeep = 0`)는 없는 주소용으로만 남아 있다. DNS는 Cloudflare가 관리하고 모든 레코드를 DNS only(프록시 꺼짐)로 유지한다. 저장소에 CNAME 파일은 두지 않는다(Actions 배포는 저장소 Pages 설정의 Custom domain을 쓴다).
+- 새 공개 페이지(라우트)를 만들면 `scripts/site-pages.mjs`의 `STATIC_PAGES`에도 제목·설명을 추가한다. (분류·중분류 페이지는 `src/data/categories.js`에서 자동으로 만들어진다.) `index.html`의 `seo:start`~`seo:end` 구간은 빌드 스크립트가 페이지마다 교체하므로 이 구간 표시를 지우지 않고, 검색엔진 소유 확인 태그는 구간 밖의 지정된 자리에 둔다. 사진·설명을 관리자에서 바꾼 뒤 공유 미리보기(og)에 반영하려면 GitHub Actions에서 "Deploy to GitHub Pages"를 수동 실행(Run workflow)한다.
 - 로컬 이미지는 `public/image/` 아래에 두고 `localImage()`로 불러온다. 제품·시공·메인·팝업 사진은 Supabase에서 불러오고 코드에 사진 경로를 적지 않는다.
 
 ## 보안

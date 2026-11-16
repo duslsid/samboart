@@ -21,7 +21,7 @@
 ## 코드 작성 주의
 - 정규식·역슬래시(`\`)가 들어간 코드는 셸(heredoc, `node -e` 등)로 쓰지 말고 Edit/Write 도구로 쓴다. 셸을 거치면 역슬래시가 사라져 정규식이 깨진 적이 있다.
 - CSS는 `src/main.jsx`의 순서(global → layout → home → products → pages)로 불러온다. 우선순위가 같으면 나중 파일·나중 줄이 이긴다. 모바일(768px 하나) 규칙은 같은 선택자의 기본 규칙보다 뒤에 둔다.
-- 배포는 GitHub Pages 하위 경로라서 Vite base가 `/samboart/`이고, 주소에 `#` 없이 BrowserRouter를 쓴다. 새로고침·직접 접속은 `public/404.html` 우회가 처리하므로 라우터를 바꾸지 않는다. samboart.com 도메인을 연결하면 바뀌는 내용이므로, 연결 작업 때 이 항목도 같이 고친다.
+- 배포는 GitHub Pages(GitHub Actions)이고 접속 주소는 https://samboart.com 이다. 도메인이 사이트 루트라서 Vite base는 `/`이고, 주소에 `#` 없이 BrowserRouter를 쓴다. 새로고침·직접 접속은 `public/404.html` 우회(`pathSegmentsToKeep = 0`)가 처리하므로 라우터를 바꾸지 않는다. DNS는 Cloudflare가 관리하고 모든 레코드를 DNS only(프록시 꺼짐)로 유지한다. 저장소에 CNAME 파일은 두지 않는다(Actions 배포는 저장소 Pages 설정의 Custom domain을 쓴다).
 - 로컬 이미지는 `public/image/` 아래에 두고 `localImage()`로 불러온다. 제품·시공·메인·팝업 사진은 Supabase에서 불러오고 코드에 사진 경로를 적지 않는다.
 
 ## 보안

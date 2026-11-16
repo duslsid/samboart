@@ -5,8 +5,8 @@
     <title>삼보아트</title>
     <!-- GitHub Pages SPA 우회: 없는 경로로 접속하면 index.html 로 경로를 넘겨 React 라우터가 처리 -->
     <script>
-      // 프로젝트 사이트(/samboart/)이므로 경로 1단계를 유지
-      var pathSegmentsToKeep = 1;
+      // 커스텀 도메인(https://samboart.com/) 루트 배포이므로 건너뛸 경로 단계가 없다
+      var pathSegmentsToKeep = 0;
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +

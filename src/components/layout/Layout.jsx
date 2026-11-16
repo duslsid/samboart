@@ -11,8 +11,10 @@ import MainSlider from '../home/MainSlider.jsx'
 export default function Layout() {
   const { pathname, hash } = useLocation()
   const [scrolled, setScrolled] = useState(false)
-  const isHome = pathname === '/'
-  const noSidebar = pathname === '/privacy' // 개인정보처리방침은 사이드바 없이 본문만
+  // 페이지별 정적 사본은 /privacy/ 처럼 끝에 슬래시가 붙은 주소로 열리므로, 비교할 때는 끝 슬래시를 뗀다
+  const path = pathname.length > 1 && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+  const isHome = path === '/'
+  const noSidebar = path === '/privacy' // 개인정보처리방침은 사이드바 없이 본문만
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0)
